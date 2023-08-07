@@ -1,7 +1,5 @@
-import { component$, useSignal, useStore, useTask$, $, useComputed$, noSerialize, NoSerialize, useVisibleTask$ } from "@builder.io/qwik";
-import { useLocation } from "@builder.io/qwik-city";
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { serialize } from "v8";
+import { type NoSerialize, noSerialize, useStore, useVisibleTask$ } from "@builder.io/qwik";
+import axios, { type AxiosInstance } from "axios";
 
 // const axiosInstance = () => axios.create();
 type ResultHttpClient = {
@@ -23,7 +21,7 @@ export const useHttpClient = (): ResultHttpClient => {
             },
             (error) => {
                 if (error?.response?.status === 401) {
-
+                    //
                 }
 
                 return Promise.reject(error);

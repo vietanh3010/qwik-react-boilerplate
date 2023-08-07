@@ -7,6 +7,9 @@ import {
 import { RouterHead } from "./components/router-head/router-head";
 
 import "./global.css";
+import { QwikSpeakProvider } from "qwik-speak";
+import { config } from "./speak-config";
+import { translationFn } from "./speak-functions";
 export default component$(() => {
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
@@ -16,16 +19,18 @@ export default component$(() => {
    */
 
   return (
-    <QwikCityProvider>
-      <head>
-        <meta charSet="utf-8" />
-        <link rel="manifest" href="/manifest.json" />
-        <RouterHead />
-        <ServiceWorkerRegister />
-      </head>
-      <body lang="en">
-        <RouterOutlet />
-      </body>
-    </QwikCityProvider>
+    <QwikSpeakProvider config={config} translationFn={translationFn}>
+        <QwikCityProvider>
+            <head>
+                <meta charSet="utf-8" />
+                <link rel="manifest" href="/manifest.json" />
+                <RouterHead />
+                <ServiceWorkerRegister />
+            </head>
+            <body lang="en">
+                <RouterOutlet />
+            </body>
+        </QwikCityProvider>
+    </QwikSpeakProvider>
   );
 });
